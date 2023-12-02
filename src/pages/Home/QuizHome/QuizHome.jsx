@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const QuizHome = () => {
   return (
-    <div className="text-lg text-slate-200 bg-slate-900 h-full w-full p-10">
+    <div className="container">
       <ol className="list-decimal">
         <li>Condition One</li>
         <li>Condition Two</li>
@@ -21,8 +21,8 @@ const QuizHome = () => {
       </form>
       <div className="flex justify-center items-center pt-4">
         <Link
-          className="px-4 py-1 border-0 rounded-md text-lg text-slate-200 no-underline bg-blue-600 mb-2"
-          to={"/quiz"}
+          className="px-4 py-1 border-0 rounded-md text-lg text-slate-200 bg-blue-600 hover:bg-blue-700 duration-100 mb-2"
+          to={"/question-one"}
         >
           Start Quiz
         </Link>

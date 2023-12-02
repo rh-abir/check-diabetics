@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import QuizRoot from "../layout/QuizRoot";
 import Root from "../layout/Root";
-import Quiz from "../pages/Home/Quiz/Quiz";
+import QuestionOne from "../pages/Home/Questions/QuestionOne";
+import QuestionThree from "../pages/Home/Questions/QuestionThree";
+import QuestionTwo from "../pages/Home/Questions/QuestionTwo";
 import QuizHome from "../pages/Home/QuizHome/QuizHome";
 import Result from "../pages/Home/Result/Result";
 
@@ -20,8 +22,16 @@ const router = createBrowserRouter([
             element: <QuizHome />,
           },
           {
-            path: "/quiz",
-            element: <Quiz />,
+            path: "/question-one",
+            element: <QuestionOne />,
+          },
+          {
+            path: "/question-two",
+            element: <QuestionTwo />,
+          },
+          {
+            path: "/question-three",
+            element: <QuestionThree />,
           },
           {
             path: "/result",
