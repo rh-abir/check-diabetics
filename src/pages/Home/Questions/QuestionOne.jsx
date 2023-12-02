@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const QuestionOne = () => {
   return (
     <div className="container">
-      <h2 className="text-xl lg:text-2xl text-slate-200 font-semibold mb-4">Gender?*</h2>
+      <h2 className="text-lg xl:text-xl text-slate-200 font-semibold mb-4">Gender?*</h2>
       <div className="flex flex-col space-y-1">
         {/* option one */}
         <div className="flex items-center gap-2">

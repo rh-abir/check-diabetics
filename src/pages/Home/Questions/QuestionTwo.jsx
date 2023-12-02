@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const QuestionTwo = () => {
   return (
     <div className="container">
-      <h2>Age?*</h2>
-      <form className="flex justify-start mt-10">
+      <h2 className="text-lg xl:text-xl lg:text-2xl text-slate-200 font-semibold mb-4">Age?*</h2>
+      <form className="flex justify-start">
         <input
           className="px-4 py-2 w-2/3 md:w-1/2  border-0 outline-none rounded-md text-base text-slate-800"
           type="number"
