@@ -41,6 +41,6 @@ const QuestionOne = () => {
       </div>
     </div>
   );
-};
+}; 
 
 export default QuestionOne;

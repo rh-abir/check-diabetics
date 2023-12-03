@@ -28,6 +28,6 @@ const QuestionTwo = () => {
       </div>
     </div>
   );
-};
+}; 
 
 export default QuestionTwo;

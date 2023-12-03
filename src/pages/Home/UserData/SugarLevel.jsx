@@ -22,7 +22,7 @@ const SugarLevel = () => {
             Prev
           </button>
         </Link>
-        <Link to={"/question"}>
+        <Link to={"/question-four"}>
           <button className="bg-green-600 px-3 py-1 text-sm rounded-sm">
             Next
           </button>

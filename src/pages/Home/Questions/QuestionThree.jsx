@@ -28,6 +28,6 @@ const QuestionThree = () => {
       </div>
     </div>
     );
-};
+}; 
 
 export default QuestionThree;
