@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const QuestionOne = () => {
-  return (
-    <div className="container">
+const Gender = () => {
+    return (
+        <div className="container">
       <h2 className="text-lg xl:text-xl text-slate-200 font-semibold mb-4">Gender?*</h2>
       <div className="flex flex-col space-y-1">
         {/* option one */}
@@ -33,14 +33,14 @@ const QuestionOne = () => {
 
       {/* Next button */}
       <div className="mt-4">
-        <Link to={"/question-two"}>
+        <Link to={"/age"}>
           <button className="bg-green-600 justify-self-end px-3 py-1 text-sm rounded-sm">
             Next
           </button>
         </Link>
       </div>
     </div>
-  );
-}; 
+    );
+};
 
-export default QuestionOne;
+export default Gender;
