@@ -33,8 +33,10 @@ const Age = () => {
           </button>
         </Link>
         <Link
-          className={`bg-green-600 px-3 py-1 text-sm rounded-sm ${
-            isTrue ? `bg-green-200 text-slate-700` : `bg-green-600`
+          className={` ${
+            isTrue
+              ? `bg-green-200 text-slate-700 px-3 py-1 text-sm rounded-sm`
+              : `bg-green-600 px-3 py-1 text-sm rounded-sm`
           }`}
           to={"/suger-level"}
         >
