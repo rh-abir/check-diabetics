@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const QuestionSeven = () => {
@@ -16,7 +15,7 @@ const QuestionSeven = () => {
             name="quiz1-option"
             id="male"
           />
-          <label for="male" className="cursor-pointer text-slate-300">
+          <label htmlFor="male" className="cursor-pointer text-slate-300">
             Yes
           </label>
         </div>
@@ -29,7 +28,7 @@ const QuestionSeven = () => {
             name="quiz1-option"
             id="female"
           />
-          <label for="female" className="cursor-pointer text-slate-300">
+          <label htmlFor="female" className="cursor-pointer text-slate-300">
             No
           </label>
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import data from "../../../database/data";
 
 const Questions = () => {
@@ -33,7 +33,7 @@ const Questions = () => {
               id={`option${index}`}
             />
             <label
-              for={`option${index}`}
+              htmlFor={`option${index}`}
               className="cursor-pointer text-slate-300 text-sm"
             >
               {option}

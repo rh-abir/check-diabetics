@@ -1,9 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const QuestionFour = () => {
-    return (
-        <div className="container">
+  return (
+    <div className="container">
       <h2 className="text-lg xl:text-xl text-slate-200 font-semibold mb-4">
         Are you Pregnant?
       </h2>
@@ -16,7 +15,7 @@ const QuestionFour = () => {
             name="quiz1-option"
             id="male"
           />
-          <label for="male" className="cursor-pointer text-slate-300">
+          <label htmlFor="male" className="cursor-pointer text-slate-300">
             Yes
           </label>
         </div>
@@ -29,7 +28,7 @@ const QuestionFour = () => {
             name="quiz1-option"
             id="female"
           />
-          <label for="female" className="cursor-pointer text-slate-300">
+          <label htmlFor="female" className="cursor-pointer text-slate-300">
             No
           </label>
         </div>
@@ -49,7 +48,7 @@ const QuestionFour = () => {
         </Link>
       </div>
     </div>
-    );
+  );
 };
 
 export default QuestionFour;
