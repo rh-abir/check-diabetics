@@ -1,6 +1,17 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const QuizHome = () => {
+  const [isTrue, setTrue] = useState(true);
+
+  const inputValue = (e) => {
+    const vlaue = e.target.value;
+    console.log(vlaue);
+    if (vlaue) {
+      setTrue(false);
+    }
+  };
+
   return (
     <div className="container">
       <ol className="list-decimal">
@@ -16,14 +27,17 @@ const QuizHome = () => {
           type="text"
           placeholder="Enter Your Name"
           required
+          onKeyUp={inputValue}
         />
       </form>
       <div className="flex justify-center items-center pt-4">
         <Link
-          className="px-4 py-1 border-0 rounded-md text-lg text-slate-200 bg-blue-600 hover:bg-blue-700 duration-100 mb-2"
+          className={`px-4 py-1 border-0 rounded-md text-lg text-slate-200   duration-100 mb-2  ${
+            isTrue ? `bg-blue-200 text-slate-700` : `bg-blue-600`
+          }`}
           to={"/gender"}
         >
-          Start Test
+          <button disabled={isTrue}>Start Test</button>
         </Link>
       </div>
     </div>
