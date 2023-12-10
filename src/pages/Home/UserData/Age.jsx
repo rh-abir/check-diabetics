@@ -1,15 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Age = () => {
-  const [isTrue, setTrue] = useState(true);
+  const [inputValue, setInputValue] = useState("");
 
-  const inputValue = (e) => {
-    const vlaue = e.target.value;
-    console.log(vlaue);
-    if (vlaue) {
-      setTrue(false);
-    }
+  const [getlatestId, setGetlatestId] = useState();
+
+  useEffect(() => {
+    fetch("http://localhost:5000/user")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setGetlatestId(data._id);
+      });
+  }, []);
+
+  const handleClick = async () => {
+    console.log(inputValue);
+    const userAge = { inputValue };
+    const data = await fetch(`http://localhost:5000/api/age/${getlatestId}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userAge),
+    });
+    const res = await data.json();
+    console.log(res);
   };
 
   return (
@@ -22,7 +39,7 @@ const Age = () => {
           className="px-4 py-2 w-2/3 md:w-1/2  border-0 outline-none rounded-md text-base text-slate-800"
           type="number"
           placeholder="Your Age"
-          onKeyUp={inputValue}
+          onKeyUp={(e) => setInputValue(e.target.value)}
         />
       </form>
       {/* Next and Prev button */}
@@ -34,13 +51,15 @@ const Age = () => {
         </Link>
         <Link
           className={` ${
-            isTrue
+            inputValue.length < 1
               ? `bg-green-200 text-slate-700 px-3 py-1 text-sm rounded-sm`
               : `bg-green-600 px-3 py-1 text-sm rounded-sm`
           }`}
           to={"/suger-level"}
         >
-          <button disabled={isTrue}>Next</button>
+          <button onClick={handleClick} disabled={inputValue.length < 1}>
+            Next
+          </button>
         </Link>
       </div>
     </div>
