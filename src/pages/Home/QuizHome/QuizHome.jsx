@@ -4,10 +4,18 @@ import { Link } from "react-router-dom";
 const QuizHome = () => {
   const [inputValue, setInputValue] = useState("");
 
-  console.log(inputValue);
-
-  const handleClick = () => {
-    console.log("hello word");
+  const handleClick = async () => {
+    console.log(inputValue);
+    const userName = { inputValue };
+    const data = await fetch("http://localhost:5000/api/create-user", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userName),
+    });
+    const res = await data.json();
+    console.log(res);
   };
 
   return (

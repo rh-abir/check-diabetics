@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Gender = () => {
@@ -9,6 +9,23 @@ const Gender = () => {
     const value = e.target.value;
     setSelectedGender(value);
     setTrue(false);
+  };
+
+  const handleClick = async () => {
+    console.log(selectedGender);
+    const data = {
+      selectedGender,
+    };
+
+    const response = await fetch("http://localhost:5000/api/user/data", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    console.log("Data sent successfully:", result);
   };
 
   return (
@@ -58,7 +75,9 @@ const Gender = () => {
           }`}
           to={"/age"}
         >
-          <button disabled={isTrue}>Next</button>
+          <button disabled={isTrue} onClick={handleClick}>
+            Next
+          </button>
         </Link>
       </div>
     </div>
