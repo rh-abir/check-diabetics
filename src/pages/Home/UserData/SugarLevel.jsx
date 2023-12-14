@@ -1,29 +1,39 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import genderData from "../../../database/gender.js";
 
 const SugarLevel = () => {
-  const [isTrue, setTrue] = useState(true);
-  const [selectedGender, setSelectedGender] = useState("");
+  const [inputValue, setInputValue] = useState("");
 
-  const inputValue = (e) => {
-    const vlaue = e.target.value;
-    console.log(vlaue);
-    if (vlaue) {
-      setTrue(false);
-    }
-  };
+  const [getlatestId, setGetlatestId] = useState();
+  const [getGender, setgetGender] = useState([]);
 
   useEffect(() => {
-    setSelectedGender(genderData);
+    fetch("http://localhost:5000/user")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setGetlatestId(data._id);
+        setgetGender(data?.gender);
+      });
   }, []);
 
+  const handleClick = async () => {
+    console.log(inputValue);
+    const userAge = { inputValue };
+    const data = await fetch(`http://localhost:5000/api/suger/${getlatestId}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userAge),
+    });
+    const res = await data.json();
+    console.log(res);
+  };
+
   const getNextRoute = () => {
-    if (selectedGender.length > 0) {
-      const maleFilter = selectedGender.filter(
-        (item) => item.gender === "Male"
-      );
-      return maleFilter.length > 0 ? "/question-five" : "/question-four";
+    if (getGender?.length > 0) {
+      return getGender.length > 0 ? "/question-five" : "/question-four";
     }
     // Default route if there's no valid gender data
     return "/question-four";
@@ -39,7 +49,7 @@ const SugarLevel = () => {
           className="px-4 py-2 w-2/3 md:w-1/2  border-0 outline-none rounded-md text-base text-slate-800"
           type="number"
           placeholder="Sugar Level"
-          onKeyUp={inputValue}
+          onKeyUp={(e) => setInputValue(e.target.value)}
         />
       </form>
       {/* Next and Prev button */}
@@ -51,14 +61,16 @@ const SugarLevel = () => {
         </Link>
         <Link
           className={` ${
-            isTrue
+            inputValue.length < 1
               ? `bg-green-200 text-slate-700 px-3 py-1 text-sm rounded-sm`
               : `bg-green-600 px-3 py-1 text-sm rounded-sm`
           }`}
           to={getNextRoute()}
           // to={"/question-four"}
         >
-          <button disabled={isTrue}>Next</button>
+          <button onClick={handleClick} disabled={inputValue.length < 1}>
+            Next
+          </button>
         </Link>
       </div>
     </div>

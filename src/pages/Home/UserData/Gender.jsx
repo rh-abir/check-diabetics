@@ -1,14 +1,41 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Gender = () => {
   const [selectedGender, setSelectedGender] = useState("");
   const [isTrue, setTrue] = useState(true);
-  console.log(selectedGender);
+
+  const [getlatestId, setGetlatestId] = useState();
+
+  useEffect(() => {
+    fetch("http://localhost:5000/user")
+      .then((res) => res.json())
+      .then((data) => {
+        setGetlatestId(data._id);
+      });
+  }, []);
+
   const inputValue = (e) => {
     const value = e.target.value;
     setSelectedGender(value);
     setTrue(false);
+  };
+
+  const handleClick = async () => {
+    console.log(selectedGender);
+    const userName = { selectedGender };
+    const data = await fetch(
+      `http://localhost:5000/api/gender/${getlatestId}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(userName),
+      }
+    );
+    const res = await data.json();
+    console.log(res);
   };
 
   return (
@@ -58,7 +85,9 @@ const Gender = () => {
           }`}
           to={"/age"}
         >
-          <button disabled={isTrue}>Next</button>
+          <button disabled={isTrue} onClick={handleClick}>
+            Next
+          </button>
         </Link>
       </div>
     </div>
